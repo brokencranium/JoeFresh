@@ -1,7 +1,7 @@
 package com.vv.buildstuff.joefresh.requestPlaces;
 
 import com.google.gson.Gson;
-import com.vv.buildstuff.joefresh.Miscellaneous;
+import com.vv.buildstuff.joefresh.util.Miscellaneous;
 import com.vv.buildstuff.joefresh.responsePlaces.ResponsePlacesNearbySearch;
 import com.vv.buildstuff.joefresh.responsePlaces.Results;
 

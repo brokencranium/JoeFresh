@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">JoeFresh</string>
+    <string-array name="stores_array">
+        <item>Joe Fresh</item>
+        <item>JC Penny</item>
+        <item>Sears</item>
+        <item>Target</item>
+        <item>Walmart</item>
+   </string-array>
+    <string name="app_name">Joe Fresh</string>
     <string name="title_activity_maps">Map</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
 </resources>

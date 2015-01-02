@@ -1,7 +1,7 @@
 package com.vv.buildstuff.joefresh.responsePlaces;
 
 
-import com.vv.buildstuff.joefresh.LatLong;
+import com.vv.buildstuff.joefresh.util.LatLong;
 
 /**
  * Created by vvennava on 10/11/14.

@@ -1,4 +1,4 @@
-package com.vv.buildstuff.joefresh;
+package com.vv.buildstuff.joefresh.util;
 
 /**
  * Created by vvennava on 10/4/14.
