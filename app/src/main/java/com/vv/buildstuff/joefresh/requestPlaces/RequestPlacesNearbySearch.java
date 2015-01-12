@@ -1,9 +1,9 @@
 package com.vv.buildstuff.joefresh.requestPlaces;
 
 import com.google.gson.Gson;
-import com.vv.buildstuff.joefresh.util.Miscellaneous;
 import com.vv.buildstuff.joefresh.responsePlaces.ResponsePlacesNearbySearch;
 import com.vv.buildstuff.joefresh.responsePlaces.Results;
+import com.vv.buildstuff.joefresh.util.Miscellaneous;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class RequestPlacesNearbySearch {
     private String urlString;
 
-    private String location;
+    private String latLongText;
     private String radius;
 
     private String keyword;
@@ -37,17 +37,16 @@ public class RequestPlacesNearbySearch {
 
 
     public RequestPlacesNearbySearch() {
-//        this.urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
-//                "-33.8670522,151.1957362&radius=5000&types=food|cafe&name=starbucks&key=AIzaSyDSeKfurM8gqRX0M4Z8zh0MhOxiqE01Tdo";
     }
 
     public ArrayList<Results> getPlacesResponse() {
         ResponsePlacesNearbySearch search = null;
         Reader reader = null;
-
+        HttpsURLConnection urlConnection = null;
+        URL url = null;
         try {
-            URL url = new URL(urlString);
-            HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+            url = new URL(urlString);
+            urlConnection = (HttpsURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
@@ -60,7 +59,9 @@ public class RequestPlacesNearbySearch {
             System.out.println(e.getMessage());
         } finally {
             try {
+
                 reader.close();
+                urlConnection.disconnect();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -84,8 +85,8 @@ public class RequestPlacesNearbySearch {
     }
 
     private String urlBuilder() {
-        if (this.location == null) {
-            this.location = Miscellaneous.DEFAULT_LOCATION.getText();
+        if (this.latLongText == null) {
+            this.latLongText = Miscellaneous.DEFAULT_LOCATION.getText();
         }
 
         if (this.radius == null) {
@@ -103,11 +104,11 @@ public class RequestPlacesNearbySearch {
 
         StringBuilder urlBuilder = new StringBuilder();
         final String urlValue = urlBuilder.append(Miscellaneous.NEARBY_SEARCH_URL)
-                .append(location)
+                .append(latLongText)
                 .append("&radius=")
                 .append(radius)
-                .append("&types=")
-                .append(types)
+//                .append("&types=")
+//                .append(types)
                 .append("&name=")
                 .append(name)
                 .append("&key=")
@@ -116,12 +117,12 @@ public class RequestPlacesNearbySearch {
         return urlValue;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLatLongText() {
+        return latLongText;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLatLongText(String latLongText) {
+        this.latLongText = latLongText;
     }
 
     public String getRadius() {
@@ -169,7 +170,7 @@ public class RequestPlacesNearbySearch {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.replaceAll("\\s", "+");
     }
 
     public String getOpennow() {

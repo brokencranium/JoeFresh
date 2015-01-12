@@ -3,16 +3,26 @@ package com.vv.buildstuff.joefresh.util;
 /**
  * Created by vvennava on 10/4/14.
  */
-public class LatLong {
+public class LatLongLoc {
     private double lat;
     private double lng;
+    private String loc;
 
-    public LatLong() {
+    public LatLongLoc() {
     }
 
-    public LatLong(double lat, double lng) {
+    public LatLongLoc(double lat, double lng, String loc) {
         this.lat = lat;
         this.lng = lng;
+        this.loc = loc;
+    }
+
+    public String getLoc() {
+        return loc;
+    }
+
+    public void setLoc(String loc) {
+        this.loc = loc;
     }
 
     public double getLat() {

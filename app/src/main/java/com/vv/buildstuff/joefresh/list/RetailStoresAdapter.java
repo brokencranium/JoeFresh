@@ -27,21 +27,55 @@ public class RetailStoresAdapter extends RecyclerView.Adapter<RetailStoresAdapte
         this.mListener = listener;
     }
 
+    public ArrayList<Model> getDataSet() {
+        return mDataset;
+    }
+
+    public void setDataSet(ArrayList<Model> dataSet) {
+        this.mDataset = dataSet;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater vi = LayoutInflater.from(parent.getContext());
         View v = vi.inflate(R.layout.list_row, null);
-//        View v = vi.inflate(R.layout.list_row, parent, false);
-//        TextView tv = (TextView) v.findViewById(R.id.storeName);
-//        CheckBox cb = (CheckBox) v.findViewById(R.id.check);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
+    @Override
+    public int getItemCount() {
+        return mDataset.size();
+    }
 
-    /**
-     * Interface for receiving click events from cells.
-     */
+
+
+    public interface OnItemClickListener {
+        public void onClick(View view, int position);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        holder.mTextView.setText((mDataset.get(position)).getName());
+
+        holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onClick(view, position);
+                (mDataset.get(position)).setToggle();
+
+            }
+        });
+
+    }
+
+    @Override
+    public void registerAdapterDataObserver(RecyclerView.AdapterDataObserver observer) {
+        super.registerAdapterDataObserver(observer);
+    }
+
+
+
     /**
      * Custom viewholder for the retail stores view.
      */
@@ -55,28 +89,6 @@ public class RetailStoresAdapter extends RecyclerView.Adapter<RetailStoresAdapte
             mTextView = (TextView) listRowView.findViewById(R.id.storeName);
             mCheckBox = (CheckBox) listRowView.findViewById(R.id.check);
         }
-    }
-
-    @Override
-    public int getItemCount() {
-        return mDataset.size();
-    }
-
-    public interface OnItemClickListener {
-        public void onClick(View view, int position);
-
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.mTextView.setText((mDataset.get(position)).getName());
-        holder.mTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.onClick(view, position);
-
-            }
-        });
     }
 
 

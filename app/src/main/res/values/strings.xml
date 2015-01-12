@@ -2,7 +2,7 @@
 <resources>
     <string-array name="stores_array">
         <item>Joe Fresh</item>
-        <item>JC Penny</item>
+        <item>JCPenney</item>
         <item>Sears</item>
         <item>Target</item>
         <item>Walmart</item>
