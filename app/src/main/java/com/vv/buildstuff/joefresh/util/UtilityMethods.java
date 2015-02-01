@@ -1,5 +1,7 @@
 package com.vv.buildstuff.joefresh.util;
 
+import com.google.gson.Gson;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
@@ -9,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,5 +67,14 @@ public class UtilityMethods {
             e.printStackTrace();
         }
     }
+
+    public static <T> T readInputStream(Reader reader, Class<T> cls) {
+//    public ResponsePlacesNearbySearch readInputStream(Reader reader, Class<T> cls) {
+        Gson gson = new Gson();
+//        return gson.fromJson(reader, ResponsePlacesNearbySearch.class);
+         return gson.fromJson(reader, cls);
+
+    }
+
 
 }

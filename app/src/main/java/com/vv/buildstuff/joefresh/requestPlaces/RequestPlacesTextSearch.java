@@ -22,17 +22,14 @@ public class RequestPlacesTextSearch {
     private HttpsURLConnection urlConnection;
     private URL url;
 
-    private String key = "IzaSyDSeKfurM8gqRX0M4Z8zh0MhOxiqE01Tdo";
-
-    public void setQuery(String query) {
-        this.query = query;
-    }
+//    private String key = "AIzaSyDSeKfurM8gqRX0M4Z8zh0MhOxiqE01Tdo";
 
     private String query;
 
     private String location;
 
     private String language;
+
     private String minprice;
     private String maxprice;
     private String opennow;
@@ -43,6 +40,10 @@ public class RequestPlacesTextSearch {
     public RequestPlacesTextSearch() {
         this.urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
                 "-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=AIzaSyDSeKfurM8gqRX0M4Z8zh0MhOxiqE01Tdo";
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 
 

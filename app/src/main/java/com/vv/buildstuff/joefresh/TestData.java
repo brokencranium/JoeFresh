@@ -1,12 +1,11 @@
 package com.vv.buildstuff.joefresh;
 
+import com.vv.buildstuff.joefresh.bea.BeaRequest;
+import com.vv.buildstuff.joefresh.bea.BeaResponse;
 import com.vv.buildstuff.joefresh.requestPlaces.RequestPlacesNearbySearch;
 import com.vv.buildstuff.joefresh.responsePlaces.Results;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by vvennava on 1/7/15.
@@ -59,28 +58,34 @@ public class TestData {
 //        String condense = name.replaceAll("\\s", "+");
 //
 //        System.out.println("condense" + condense);
-        Map<String, List<TestData>>  listMap = new HashMap<>();
+//        Map<String, List<TestData>>  listMap = new HashMap<>();
+//
+//        List<TestData> duplicateValues = new ArrayList();
+//
+//        listMap.put("Line1",duplicateValues );
+//
+//        duplicateValues.add(testData);
+//        duplicateValues.add(testData);
+//
+//        listMap.put("Line1",duplicateValues);
+//
+//        listMap.put("Line2",duplicateValues);
+//
+//
+//        List duplicateValuesTemp = new ArrayList();
+//
+////        listMap.put("Line2",duplicateValuesTemp);
+//
+//
+//        System.out.println("Success");
+//
+//        String output = duplicateValues.get(1).getName();
+//        System.out.println("Success");
 
-        List<TestData> duplicateValues = new ArrayList();
 
-        listMap.put("Line1",duplicateValues );
+        BeaRequest beaRequest = new BeaRequest();
+        BeaResponse beaResult = beaRequest.getBeaResponse();
 
-        duplicateValues.add(testData);
-        duplicateValues.add(testData);
-
-        listMap.put("Line1",duplicateValues);
-
-        listMap.put("Line2",duplicateValues);
-
-
-        List duplicateValuesTemp = new ArrayList();
-
-//        listMap.put("Line2",duplicateValuesTemp);
-
-
-        System.out.println("Success");
-
-        String output = duplicateValues.get(1).getName();
         System.out.println("Success");
 
     }

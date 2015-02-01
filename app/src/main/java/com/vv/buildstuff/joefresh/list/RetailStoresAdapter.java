@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.vv.buildstuff.joefresh.R;
@@ -33,6 +34,12 @@ public class RetailStoresAdapter extends RecyclerView.Adapter<RetailStoresAdapte
 
     public void setDataSet(ArrayList<Model> dataSet) {
         this.mDataset = dataSet;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+//        return super.getItemViewType(position);
+        return 1;
     }
 
     @Override
@@ -91,5 +98,18 @@ public class RetailStoresAdapter extends RecyclerView.Adapter<RetailStoresAdapte
         }
     }
 
+    /**
+     *
+     */
+    public static class ViewHolderMisc extends RecyclerView.ViewHolder{
+        public TextView mTextViewRadius;
+        public EditText mEditTextRadius;
+        public ViewHolderMisc(View miscView) {
+            super(miscView);
+            mTextViewRadius = (TextView) miscView.findViewById(R.id.radiusTitle);
+            mEditTextRadius = (EditText) miscView.findViewById(R.id.radius);
+
+        }
+    }
 
 }
